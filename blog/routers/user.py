@@ -15,7 +15,6 @@ get_db = database.get_db
 def create_user(request:schemas.User,db: Session = Depends(get_db),current_user: schemas.User = Depends(oauth2.get_current_user)):
     return user.create(request,db)
 
-router
 @router.get("/",response_model=List[schemas.ShowUser])
 def get_users(db: Session = Depends(get_db),current_user: schemas.User = Depends(oauth2.get_current_user)):
    return user.get_all(db)
@@ -24,3 +23,7 @@ def get_users(db: Session = Depends(get_db),current_user: schemas.User = Depends
 @router.get("/{id}",response_model=schemas.ShowUser)
 def get_user(id:int,db: Session = Depends(get_db),current_user: schemas.User = Depends(oauth2.get_current_user)):
     return user.show(id,db)
+
+
+
+

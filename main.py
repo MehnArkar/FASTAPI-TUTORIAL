@@ -1,10 +1,11 @@
-from typing import Union
 from typing import Optional
 from pydantic import BaseModel
+from mangum import Mangum
 
 from fastapi import FastAPI
 
 app = FastAPI()
+handler = Mangum(app)
 
 
 @app.get("/blog")
